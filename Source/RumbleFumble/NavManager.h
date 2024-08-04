@@ -4,9 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-//#include "NavigationSystem.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "NavManager.generated.h"
 
+class UNavigationSystemV1;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class RUMBLEFUMBLE_API UNavManager : public UActorComponent
@@ -21,15 +23,21 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	//UPROPERTY(VisibleAnywhere)
+	//UNavigationSystemV1* NavigationSystem;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable)
-	void StartEffectNav();
+	void StartEffectNav(UStaticMeshComponent* MyMesh);
 	
 	UFUNCTION(BlueprintCallable)
-	void StopEffectNav();
+	void StopEffectNav(UStaticMeshComponent* MyMesh);
 
-		
+	
+	
+	
+	
 };

@@ -2,7 +2,8 @@
 
 
 #include "NavManager.h"
-//#include "NavigationSystem.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 
 // Sets default values for this component's properties
 UNavManager::UNavManager()
@@ -33,13 +34,15 @@ void UNavManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	// ...
 }
 
-void UNavManager::StartEffectNav()
+void UNavManager::StartEffectNav(UStaticMeshComponent* MyMesh)
 {
+	MyMesh->SetCanEverAffectNavigation(true);
 	UE_LOG(LogTemp, Display, TEXT("Start Effect Nav"));
 }
 
-void UNavManager::StopEffectNav()
+void UNavManager::StopEffectNav(UStaticMeshComponent* MyMesh)
 {
+	MyMesh->SetCanEverAffectNavigation(false);
 	UE_LOG(LogTemp, Display, TEXT("Stop Effect Nav"));
 }
 
